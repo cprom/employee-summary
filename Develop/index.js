@@ -17,12 +17,32 @@ prompt([
     type: 'list',
     name: 'role',
     message: 'What is your role at the company?',
-    choices: ['Engineer', 'Intern']
+    choices: ['Manager', 'Engineer', 'Intern'],
+    default: 'Engineer'
   }
-
 ])
-  .then(({ email, id, role }) => {
-    console.log(email, id, role)
+
+  .then(({ email, id, role, gitHub, school }) => {
+    if (role === 'Engineer') {
+      prompt({
+        type: 'input',
+        name: 'gitHub',
+        message: 'PLease enter your GitHub username.'
+
+      })
+    } else {
+      prompt({
+        type: 'input',
+        name: 'school',
+        message: 'Please enter the name of the school you are attending.'
+
+      })
+
+    }
+
+
   })
 
   .catch(e => console.log(e))
+
+
